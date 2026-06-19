@@ -1,8 +1,8 @@
-<h1>📱 todus-lib</h1>
+<h1>📱 toDus-API</h1>
 
 <p align="center">
-  <a href="https://pypi.org/project/todus-lib/"><img src="https://img.shields.io/pypi/v/todus-lib" alt="PyPI"></a>
-  <a href="https://pypi.org/project/todus-lib/"><img src="https://img.shields.io/pypi/pyversions/todus-lib" alt="Python"></a>
+  <a href="https://pypi.org/project/toDus-API/"><img src="https://img.shields.io/pypi/v/toDus-API" alt="PyPI"></a>
+  <a href="https://pypi.org/project/toDus-API/"><img src="https://img.shields.io/pypi/pyversions/toDus-API" alt="Python"></a>
   <a href="https://github.com/ElJoker63/toDus-API/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/ElJoker63/toDus-API/ci.yml?branch=main&label=tests" alt="Tests"></a>
   <a href="https://github.com/ElJoker63/toDus-API/actions/workflows/pypi-publish.yml"><img src="https://img.shields.io/github/actions/workflow/status/ElJoker63/toDus-API/pypi-publish.yml?branch=main&label=publish" alt="Publish"></a>
   <a href="https://github.com/ElJoker63/toDus-API/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ElJoker63/toDus-API" alt="License"></a>
@@ -11,7 +11,7 @@
 <p><strong>Cliente Python para ToDus</strong> — la plataforma de mensajería instantánea cubana. Soporta chat privado, grupos MUC Light, archivos, imágenes, videos, stickers, botones interactivos y más.</p>
 
 <ul>
-  <li><strong>Versión:</strong> 1.3.2</li>
+  <li><strong>Versión:</strong> 1.3.3</li>
   <li><strong>Python:</strong> >= 3.11</li>
   <li><strong>Autor:</strong> ElJoker63</li>
   <li><strong>Licencia:</strong> MIT</li>
@@ -21,7 +21,7 @@
 
 <h2>📦 Instalación</h2>
 
-<pre><code>pip install todus-lib</code></pre>
+<pre><code>pip install toDus-API</code></pre>
 
 <p>O directamente desde el repositorio:</p>
 
@@ -263,6 +263,6 @@ print(f"Descargado {size} bytes en {path}")</code></pre>
 
 - **ToDus oficial:** [ToDus](https://web.todus.cu)
 - **Apklis:** [Apklis](https://www.apklis.cu/application/cu.todus.android)
-- **PyPI:** [todus-lib](https://pypi.org/project/todus-lib/)
+- **PyPI:** [toDus-API](https://pypi.org/project/toDus-API/)
 - **Changelog:** [CHANGELOG.md](CHANGELOG.md)
 - **Contribuir:** [CONTRIBUTING.md](CONTRIBUTING.md)

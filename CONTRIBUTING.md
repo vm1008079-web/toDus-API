@@ -1,4 +1,4 @@
-# Contribuir a todus-lib
+# Contribuir a toDus-API
 
 ¡Gracias por tu interés en contribuir! 🎉
 
@@ -34,7 +34,7 @@ git checkout -b feature/mi-nueva-funcionalidad
 - Escribe código limpio y legible
 - Añade docstrings en español
 - Incluye tests para funcionalidad nueva
-- Mantén compatibilidad con Python >= 3.8
+- Mantén compatibilidad con Python >= 3.11
 
 ### 5. Ejecutar Tests
 

@@ -57,8 +57,7 @@ def main():
         if body.strip().lower() == "/info":
             client.send_message(
                 sender,
-                "Bot de ejemplo usando todus-lib v1.3.0
-"
+                "Bot de ejemplo usando toDus-API v1.3.3\n"
                 "Soporta mensajes, archivos, imágenes, videos y grupos."
             )
             return

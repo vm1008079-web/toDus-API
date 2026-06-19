@@ -3,7 +3,7 @@ requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "todus-lib"
+name = "toDus-API"
 dynamic = ["version"]
 description = "Cliente Python para ToDus (mensajería cubana) — chat, grupos, archivos, stickers y más"
 readme = "README.md"
