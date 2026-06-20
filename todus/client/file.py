@@ -94,7 +94,7 @@ class ToDusFileMixin:
     def upload_file(self, token: str, data: bytes, file_type: FileType = FileType.FILE, progress_callback: Callable[[int, int], None] = None, file_name: str = "") -> str:
         up_url, down_url = self.reserve_upload_url(token, len(data), file_type, file_name=file_name)
         upload_data = _ProgressReader(data, progress_callback) if progress_callback else data
-        resp = requests.put(
+        resp = self.session.put(
             up_url,
             data=upload_data,
             headers={"Content-Length": str(len(data))},

@@ -34,7 +34,7 @@ class ToDusProfileMixin:
             thumbnail_data = image_data
 
         up_url, down_url = self.reserve_upload_url(token, len(image_data), FileType.PROFILE)
-        resp = requests.put(
+        resp = self.session.put(
             up_url,
             data=image_data,
             headers={"Content-Length": str(len(image_data)), "Content-Type": "application/octet-stream"},
@@ -44,7 +44,7 @@ class ToDusProfileMixin:
         profile_url = down_url
 
         up_url, down_url = self.reserve_upload_url(token, len(thumbnail_data), FileType.PROFILE_THUMBNAIL)
-        resp = requests.put(
+        resp = self.session.put(
             up_url,
             data=thumbnail_data,
             headers={"Content-Length": str(len(thumbnail_data)), "Content-Type": "application/octet-stream"},

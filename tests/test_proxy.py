@@ -63,3 +63,72 @@ class TestProxySupport:
             "http": proxy_url,
             "https": proxy_url,
         }
+
+    def test_upload_file_uses_session(self, monkeypatch):
+        client = ToDusClient2(phone_number="5312345678", password="pass", proxy="http://127.0.0.1:8080")
+        client._token = "mock_token"
+
+        def mock_reserve(*args, **kwargs):
+            return "https://upload.todus.cu/put", "https://download.todus.cu/get"
+        monkeypatch.setattr(client, "reserve_upload_url", mock_reserve)
+
+        called_args = []
+        class MockResponse:
+            def raise_for_status(self):
+                pass
+        
+        def mock_put(url, *args, **kwargs):
+            called_args.append(url)
+            return MockResponse()
+            
+        monkeypatch.setattr(client.session, "put", mock_put)
+
+        down_url = client.upload_file(b"test data", file_name="test.txt")
+        
+        assert down_url == "https://download.todus.cu/get"
+        assert len(called_args) == 1
+        assert called_args[0] == "https://upload.todus.cu/put"
+        assert client.session.proxies == {
+            "http": "http://127.0.0.1:8080",
+            "https": "http://127.0.0.1:8080",
+        }
+
+    def test_upload_avatar_uses_session(self, monkeypatch):
+        client = ToDusClient2(phone_number="5312345678", password="pass", proxy="http://127.0.0.1:8080")
+        client._token = "mock_token"
+
+        urls = [
+            ("https://upload.todus.cu/put_main", "https://download.todus.cu/get_main"),
+            ("https://upload.todus.cu/put_thumb", "https://download.todus.cu/get_thumb")
+        ]
+        url_idx = 0
+        def mock_reserve(*args, **kwargs):
+            nonlocal url_idx
+            val = urls[url_idx]
+            url_idx += 1
+            return val
+        monkeypatch.setattr(client, "reserve_upload_url", mock_reserve)
+
+        called_urls = []
+        class MockResponse:
+            def raise_for_status(self):
+                pass
+        
+        def mock_put(url, *args, **kwargs):
+            called_urls.append(url)
+            return MockResponse()
+            
+        monkeypatch.setattr(client.session, "put", mock_put)
+
+        profile_url, thumb_url = client.upload_avatar(b"main_image", b"thumb_image")
+        
+        assert profile_url == "https://download.todus.cu/get_main"
+        assert thumb_url == "https://download.todus.cu/get_thumb"
+        assert len(called_urls) == 2
+        assert called_urls[0] == "https://upload.todus.cu/put_main"
+        assert called_urls[1] == "https://upload.todus.cu/put_thumb"
+        assert client.session.proxies == {
+            "http": "http://127.0.0.1:8080",
+            "https": "http://127.0.0.1:8080",
+        }
+
